@@ -32,11 +32,12 @@ Object.defineProperty(exports, "__esModule", {
           (0, _findFreePort.default)(APP_PORT).then(([freep]) => {
             this.port = freep;
             let app = (0, _express.default)();
-            app.use(_express.default.static('dist'));
+            // app.use(_express.default.static('dist'));
+            app.use(_express.default.static(path.join(ROOT_PATH, '/dist/')));
             // app.use(cors(corsOptions));
             app.get('/', (req, res) => {
               // res.sendFile(__dirname + '/dist/index.html');
-              res.sendFile(path.join(ROOT_PATH , '/index.html'));
+              res.sendFile(path.join(ROOT_PATH , '/dist/index.html'));
             });
             this.listener = app.listen(this.port, () => {
               isDebug ? console.log('Example app listening on port', this.port) : isDebug;

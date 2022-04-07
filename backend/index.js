@@ -1,6 +1,7 @@
 const APP_PORT = 8000;
 const IS_DEBUG = true;
-const ROOT_PATH = __dirname;
+// const ROOT_PATH = __dirname;
+const ROOT_PATH = require('electron-root-path').rootPath;
 
 var _express_server = require("./src/express_server.js");
 var _websocket_server = require("./src/websocket_server.js");
@@ -88,6 +89,10 @@ function createWindow () {
   })
   // mainWindow.webContents.send('onload', expPort);
 }
+
+const template = []; 
+const menu = electron.Menu.buildFromTemplate(template); 
+electron.Menu.setApplicationMenu(menu);
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
